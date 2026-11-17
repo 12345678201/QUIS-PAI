@@ -1,614 +1,737 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Identitas Website -->
-<title>Kuis Pendidikan Agama Islam</title>
+  <!-- Identitas website -->
+  <title>Kuis Pendidikan Agama Islam | Tugas PAI</title>
+  <meta name="description" content="Kuis interaktif Pendidikan Agama Islam. Uji pengetahuan tentang Al-Qur'an, Akidah, Fikih, Akhlak, dan Sejarah Islam.">
 
-<meta name="description" content="Website kuis interaktif Pendidikan Agama Islam. Uji pengetahuanmu tentang Al-Qur'an, Hadis, Fikih, Akidah Akhlak, dan Sejarah Islam.">
+  <!-- WhatsApp, Facebook, dan media sosial -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="QUIZ PAI">
+  <meta property="og:title" content="TUGAS PAI - M. YAZID DAN ASRURI">
+  <meta property="og:description" content="Belajar Pendidikan Agama Islam melalui kuis interaktif berisi 15 pertanyaan.">
+  <meta property="og:image" content="https://12345678201.github.io/QUIS-PAI/preview.png">
+  <meta property="og:image:secure_url" content="https://12345678201.github.io/QUIS-PAI/preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://12345678201.github.io/QUIS-PAI/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TUGAS PAI - M. YAZID DAN ASRURI">
+  <meta name="twitter:description" content="Belajar Pendidikan Agama Islam melalui kuis interaktif.">
+  <meta name="twitter:image" content="https://12345678201.github.io/QUIS-PAI/preview.png">
 
-<!-- WhatsApp Link Preview -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="TUGAS PAI - M. YAZID DAN ASRURI">
-<meta property="og:description" content="Belajar agama Islam jadi lebih menyenangkan melalui kuis interaktif!">
+  <meta name="theme-color" content="#075b3b">
 
-<meta property="og:image" content="https://12345678201.github.io/QUIS-PAI/preview.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:url" content="https://12345678201.github.io/QUIS-PAI/">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<meta name="twitter:card" content="summary_large_image">
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f0f5f1;
+      color: #24352b;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+    header {
+      background: linear-gradient(135deg, #064e32, #13804e);
+      color: #fff;
+      padding: 34px 16px;
+      text-align: center;
+    }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f5f1;
-  color: #24352b;
-  min-height: 100vh;
-}
+    header h1 {
+      font-size: clamp(25px, 5vw, 34px);
+      margin-bottom: 7px;
+      letter-spacing: 1px;
+    }
 
-header {
-  background: linear-gradient(135deg, #064e32, #13804e);
-  color: white;
-  padding: 30px 15px;
-  text-align: center;
-}
+    header p {
+      color: #d9f5e4;
+      margin-top: 3px;
+    }
 
-header h1 {
-  font-size: 30px;
-  margin-bottom: 8px;
-}
+    .team {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 6px 14px;
+      border: 1px solid #d9f5e4;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: .5px;
+    }
 
-header p {
-  color: #d9f5e4;
-}
+    .container {
+      width: min(100% - 28px, 700px);
+      margin: 28px auto;
+    }
 
-.container {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-}
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 22px #00000012;
+    }
 
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 25px;
-  box-shadow: 0 5px 20px #00000012;
-}
+    h2 {
+      color: #08613c;
+      margin-bottom: 14px;
+    }
 
-h2 {
-  color: #08613c;
-  margin-bottom: 15px;
-}
+    .intro {
+      color: #536258;
+      margin-bottom: 8px;
+    }
 
-input {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 9px;
-  margin: 15px 0;
-  font-size: 16px;
-}
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 7px;
+    }
 
-button {
-  border: none;
-  padding: 13px 20px;
-  border-radius: 9px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-}
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #cbd7ce;
+      border-radius: 9px;
+      margin: 5px 0 15px;
+      font-size: 16px;
+      color: #24352b;
+    }
 
-.primary {
-  background: #087443;
-  color: white;
-}
+    input:focus {
+      outline: 3px solid #13804e30;
+      border-color: #13804e;
+    }
 
-.primary:hover {
-  background: #055632;
-}
+    button {
+      border: none;
+      padding: 13px 18px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
 
-.secondary {
-  background: #e6eee8;
-  color: #175a39;
-}
+    button:focus-visible {
+      outline: 3px solid #d4a72c;
+      outline-offset: 2px;
+    }
 
-button:disabled {
-  opacity: .4;
-  cursor: not-allowed;
-}
+    button:active:not(:disabled) {
+      transform: scale(.98);
+    }
 
-.hidden {
-  display: none !important;
-}
+    .primary {
+      background: #087443;
+      color: #fff;
+    }
 
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 14px;
-}
+    .primary:hover {
+      background: #055632;
+    }
 
-.progress {
-  background: #e5eae6;
-  height: 9px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 25px;
-}
+    .secondary {
+      background: #e6eee8;
+      color: #175a39;
+    }
 
-.progress-bar {
-  height: 100%;
-  background: #d4a72c;
-  width: 0%;
-  transition: .3s;
-}
+    .secondary:hover {
+      background: #d8e7dc;
+    }
 
-.question {
-  font-size: 19px;
-  font-weight: bold;
-  line-height: 1.5;
-  margin: 20px 0;
-}
+    .start-button {
+      width: 100%;
+      margin-top: 4px;
+    }
 
-.option {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 15px;
-  margin: 10px 0;
-  background: #f4f7f4;
-  border: 2px solid #e5ebe6;
-  border-radius: 10px;
-  color: #253b2d;
-  font-weight: normal;
-}
+    button:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
 
-.option:hover {
-  border-color: #13804e;
-}
+    .hidden {
+      display: none !important;
+    }
 
-.option.selected {
-  background: #e1f3e8;
-  border-color: #13804e;
-}
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #526258;
+    }
 
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 25px;
-}
+    .progress {
+      background: #e5eae6;
+      height: 9px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
 
-.navigation button {
-  flex: 1;
-}
+    .progress-bar {
+      height: 100%;
+      background: #d4a72c;
+      width: 0%;
+      transition: width .3s;
+    }
 
-.result {
-  text-align: center;
-}
+    .category {
+      display: inline-block;
+      background: #e8f5ec;
+      color: #087443;
+      padding: 5px 11px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
 
-.score {
-  font-size: 65px;
-  color: #087443;
-  font-weight: bold;
-  margin: 20px;
-}
+    .question {
+      font-size: 19px;
+      font-weight: bold;
+      line-height: 1.5;
+      margin: 15px 0 20px;
+    }
 
-.review {
-  margin-top: 25px;
-  text-align: left;
-}
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 15px;
+      margin: 10px 0;
+      background: #f4f7f4;
+      border: 2px solid #e5ebe6;
+      border-radius: 10px;
+      color: #253b2d;
+      font-weight: normal;
+      line-height: 1.45;
+    }
 
-.review-item {
-  background: #f4f7f4;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 12px 0;
-  line-height: 1.6;
-}
+    .option:hover {
+      border-color: #13804e;
+    }
 
-.correct {
-  color: #087443;
-  font-weight: bold;
-}
+    .option.selected {
+      background: #e1f3e8;
+      border-color: #13804e;
+      font-weight: bold;
+    }
 
-.wrong {
-  color: #c0392b;
-  font-weight: bold;
-}
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 25px;
+    }
 
-footer {
-  text-align: center;
-  color: #758078;
-  padding: 20px;
-  font-size: 13px;
-}
+    .navigation button {
+      flex: 1;
+    }
 
-@media(max-width: 500px) {
-  header h1 {
-    font-size: 24px;
-  }
+    .result {
+      text-align: center;
+    }
 
-  .container {
-    padding: 12px;
-    margin: 18px auto;
-  }
+    .score {
+      font-size: 65px;
+      color: #087443;
+      font-weight: bold;
+      margin: 14px 0;
+      line-height: 1.2;
+    }
 
-  .card {
-    padding: 18px;
-  }
-}
-</style>
+    .score-caption {
+      color: #65736a;
+      font-size: 13px;
+    }
+
+    .result-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .review {
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    .review-item {
+      background: #f4f7f4;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    .review-item p {
+      margin-top: 7px;
+    }
+
+    .correct {
+      color: #087443;
+      font-weight: bold;
+    }
+
+    .wrong {
+      color: #c0392b;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #758078;
+      padding: 20px 14px 28px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        margin: 18px auto;
+      }
+
+      .card {
+        padding: 19px;
+      }
+
+      .navigation button,
+      .result-actions button {
+        padding: 12px 9px;
+        font-size: 14px;
+      }
+
+      .progress-info {
+        font-size: 12px;
+      }
+
+      .question {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .navigation,
+      .result-actions {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <h1>☪ QUIZ PAI</h1>
+    <p>Pendidikan Agama Islam</p>
+    <p>Uji Pengetahuan dan Wawasan Keislamanmu</p>
+    <div class="team">TUGAS KELOMPOK | M. YAZID DAN ASRURI</div>
+  </header>
 
-<header>
-  <h1>☪ QUIZ PAI</h1>
-  <p>Pendidikan Agama Islam</p>
-  <p>Uji Pengetahuan dan Wawasan Keislamanmu</p>
-</header>
+  <main class="container">
+    <!-- HALAMAN AWAL -->
+    <section class="card" id="start">
+      <h2>Selamat Datang!</h2>
+      <p class="intro">Selamat datang di kuis Pendidikan Agama Islam.</p>
+      <p class="intro">Jawablah 15 pertanyaan berikut dengan teliti.</p>
 
-<div class="container">
+      <label for="studentName">Nama peserta</label>
+      <input
+        type="text"
+        id="studentName"
+        placeholder="Masukkan nama kamu"
+        maxlength="60"
+        autocomplete="name"
+        required
+      >
 
-  <!-- HALAMAN AWAL -->
-  <section class="card" id="start">
-    <h2>Selamat Datang!</h2>
-    <p>Selamat datang di kuis Pendidikan Agama Islam.</p>
-    <p>Jawablah 15 pertanyaan berikut dengan benar.</p>
-
-    <input
-      type="text"
-      id="studentName"
-      placeholder="Masukkan nama kamu"
-    >
-
-    <button class="primary" onclick="startQuiz()">
-      Mulai Kuis →
-    </button>
-  </section>
-
-  <!-- HALAMAN SOAL -->
-  <section class="card hidden" id="quiz">
-
-    <div class="progress-info">
-      <span id="questionNumber">Soal 1 dari 15</span>
-      <span id="answered">Terjawab: 0/15</span>
-    </div>
-
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <h2 id="category">Materi PAI</h2>
-
-    <div class="question" id="question"></div>
-
-    <div id="options"></div>
-
-    <div class="navigation">
-      <button class="secondary" id="prevBtn"
-        onclick="previousQuestion()">
-        ← Sebelumnya
+      <button class="primary start-button" type="button" onclick="startQuiz()">
+        Mulai Kuis →
       </button>
+    </section>
 
-      <button class="primary" id="nextBtn"
-        onclick="nextQuestion()">
-        Berikutnya →
-      </button>
-    </div>
+    <!-- HALAMAN SOAL -->
+    <section class="card hidden" id="quiz" aria-live="polite">
+      <div class="progress-info">
+        <span id="questionNumber">Soal 1 dari 15</span>
+        <span id="answered">Terjawab: 0/15</span>
+      </div>
 
-  </section>
+      <div
+        class="progress"
+        role="progressbar"
+        aria-label="Kemajuan kuis"
+        aria-valuemin="0"
+        aria-valuemax="15"
+        aria-valuenow="0"
+        id="progressTrack"
+      >
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
 
-  <!-- HALAMAN HASIL -->
-  <section class="card hidden result" id="result">
+      <div class="category" id="category">Materi PAI</div>
+      <div class="question" id="question"></div>
+      <div id="options"></div>
 
-    <h2>Kuis Selesai!</h2>
-    <p id="resultName"></p>
+      <div class="navigation">
+        <button class="secondary" id="prevBtn" type="button" onclick="previousQuestion()">
+          ← Sebelumnya
+        </button>
+        <button class="primary" id="nextBtn" type="button" onclick="nextQuestion()">
+          Berikutnya →
+        </button>
+      </div>
+    </section>
 
-    <div class="score" id="score">0</div>
+    <!-- HALAMAN HASIL -->
+    <section class="card hidden result" id="result" aria-live="polite">
+      <h2>Kuis Selesai!</h2>
+      <p id="resultName"></p>
 
-    <h3 id="grade"></h3>
-    <p id="description"></p>
+      <div class="score" id="score">0</div>
+      <p class="score-caption">NILAI AKHIR</p>
 
-    <p id="detailScore"></p>
+      <h3 id="grade"></h3>
+      <p id="description"></p>
+      <p id="detailScore" style="margin-top: 12px;"></p>
 
-    <button class="primary" onclick="showReview()">
-      Lihat Pembahasan
-    </button>
+      <div class="result-actions">
+        <button class="primary" type="button" onclick="showReview()">
+          Lihat Pembahasan
+        </button>
+        <button class="secondary" type="button" onclick="restartQuiz()">
+          Ulangi Kuis
+        </button>
+      </div>
 
-    <button class="secondary" onclick="restartQuiz()">
-      Ulangi Kuis
-    </button>
+      <div class="review hidden" id="review">
+        <h2>Pembahasan Jawaban</h2>
+        <div id="reviewContent"></div>
+      </div>
+    </section>
+  </main>
 
-    <div class="review hidden" id="review">
-      <h2>Pembahasan Jawaban</h2>
-      <div id="reviewContent"></div>
-    </div>
+  <footer>
+    © 2026 QUIZ PAI | Media Pembelajaran Pendidikan Agama Islam
+    <br>
+    Disusun oleh M. Yazid dan Asruri
+  </footer>
 
-  </section>
+  <script>
+    "use strict";
 
-</div>
+    const questions = [
+      {
+        category: "Al-Qur'an",
+        question: "Kitab suci yang diturunkan kepada Nabi Muhammad SAW adalah ...",
+        options: ["Taurat", "Zabur", "Al-Qur'an", "Injil"],
+        answer: 2,
+        explanation: "Al-Qur'an merupakan kitab suci yang diturunkan kepada Nabi Muhammad SAW melalui Malaikat Jibril."
+      },
+      {
+        category: "Akidah",
+        question: "Jumlah rukun iman dalam Islam adalah ...",
+        options: ["4", "5", "6", "7"],
+        answer: 2,
+        explanation: "Rukun iman berjumlah enam, yaitu iman kepada Allah, malaikat, kitab, rasul, hari akhir, serta qada dan qadar."
+      },
+      {
+        category: "Fikih",
+        question: "Shalat wajib yang dilaksanakan umat Islam dalam sehari semalam berjumlah ...",
+        options: ["3 waktu", "4 waktu", "5 waktu", "6 waktu"],
+        answer: 2,
+        explanation: "Shalat wajib terdiri dari Subuh, Zuhur, Asar, Magrib, dan Isya."
+      },
+      {
+        category: "Akhlak",
+        question: "Sikap berkata sesuai dengan kenyataan disebut ...",
+        options: ["Sombong", "Jujur", "Dengki", "Takabur"],
+        answer: 1,
+        explanation: "Jujur adalah sikap menyampaikan sesuatu sesuai dengan kenyataan."
+      },
+      {
+        category: "Al-Qur'an",
+        question: "Surah pertama dalam susunan mushaf Al-Qur'an adalah ...",
+        options: ["Al-Baqarah", "Al-Ikhlas", "Al-Fatihah", "An-Nas"],
+        answer: 2,
+        explanation: "Surah Al-Fatihah merupakan surah pertama dalam susunan mushaf Al-Qur'an."
+      },
+      {
+        category: "Sejarah Islam",
+        question: "Nabi Muhammad SAW dilahirkan di kota ...",
+        options: ["Madinah", "Makkah", "Baghdad", "Damaskus"],
+        answer: 1,
+        explanation: "Nabi Muhammad SAW dilahirkan di kota Makkah."
+      },
+      {
+        category: "Fikih",
+        question: "Bersuci dari hadas kecil dapat dilakukan dengan ...",
+        options: ["Wudhu", "Tidur", "Makan", "Berjalan"],
+        answer: 0,
+        explanation: "Wudhu merupakan salah satu cara bersuci dari hadas kecil."
+      },
+      {
+        category: "Akidah",
+        question: "Malaikat yang bertugas menyampaikan wahyu adalah ...",
+        options: ["Mikail", "Israfil", "Izrail", "Jibril"],
+        answer: 3,
+        explanation: "Malaikat Jibril bertugas menyampaikan wahyu Allah kepada para nabi dan rasul."
+      },
+      {
+        category: "Akhlak",
+        question: "Berbakti kepada kedua orang tua disebut ...",
+        options: ["Ujub", "Birrul walidain", "Riya", "Hasad"],
+        answer: 1,
+        explanation: "Birrul walidain berarti berbuat baik dan berbakti kepada kedua orang tua."
+      },
+      {
+        category: "Fikih",
+        question: "Puasa wajib bagi umat Islam dilaksanakan pada bulan ...",
+        options: ["Syawal", "Rajab", "Ramadan", "Muharam"],
+        answer: 2,
+        explanation: "Puasa Ramadan merupakan salah satu kewajiban bagi umat Islam yang memenuhi syarat."
+      },
+      {
+        category: "Al-Qur'an",
+        question: "Surah Al-Ikhlas menjelaskan tentang ...",
+        options: ["Kisah nabi", "Keesaan Allah", "Hukum waris", "Perdagangan"],
+        answer: 1,
+        explanation: "Surah Al-Ikhlas menjelaskan tentang tauhid dan keesaan Allah SWT."
+      },
+      {
+        category: "Sejarah Islam",
+        question: "Peristiwa hijrah Nabi Muhammad SAW adalah perpindahan dari ...",
+        options: ["Madinah ke Makkah", "Makkah ke Madinah", "Makkah ke Mesir", "Madinah ke Syam"],
+        answer: 1,
+        explanation: "Nabi Muhammad SAW berhijrah dari Makkah ke Madinah."
+      },
+      {
+        category: "Akidah",
+        question: "Rukun Islam yang pertama adalah ...",
+        options: ["Shalat", "Zakat", "Puasa", "Syahadat"],
+        answer: 3,
+        explanation: "Syahadat merupakan rukun Islam yang pertama."
+      },
+      {
+        category: "Akhlak",
+        question: "Sikap rendah hati dan tidak sombong disebut ...",
+        options: ["Tawadhu", "Takabur", "Riya", "Hasad"],
+        answer: 0,
+        explanation: "Tawadhu adalah sikap rendah hati dan tidak merasa lebih baik daripada orang lain."
+      },
+      {
+        category: "Fikih",
+        question: "Zakat fitrah ditunaikan pada bulan ...",
+        options: ["Ramadan", "Safar", "Rajab", "Rabiul Awal"],
+        answer: 0,
+        explanation: "Zakat fitrah ditunaikan pada bulan Ramadan hingga sebelum pelaksanaan salat Idulfitri."
+      }
+    ];
 
-<footer>
-  © 2026 Quiz PAI | Media Pembelajaran Pendidikan Agama Islam
-</footer>
+    let currentQuestion = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let student = "";
 
-<script>
+    const getElement = (id) => document.getElementById(id);
 
-const questions = [
-  {
-    category: "Al-Qur'an",
-    question: "Kitab suci yang diturunkan kepada Nabi Muhammad SAW adalah ...",
-    options: ["Taurat", "Zabur", "Al-Qur'an", "Injil"],
-    answer: 2,
-    explanation: "Al-Qur'an merupakan kitab suci yang diturunkan kepada Nabi Muhammad SAW melalui Malaikat Jibril."
-  },
-  {
-    category: "Akidah",
-    question: "Jumlah rukun iman dalam Islam adalah ...",
-    options: ["4", "5", "6", "7"],
-    answer: 2,
-    explanation: "Rukun iman berjumlah enam, yaitu iman kepada Allah, malaikat, kitab, rasul, hari akhir, serta qada dan qadar."
-  },
-  {
-    category: "Fiqih",
-    question: "Shalat wajib yang dilaksanakan umat Islam dalam sehari semalam berjumlah ...",
-    options: ["3 waktu", "4 waktu", "5 waktu", "6 waktu"],
-    answer: 2,
-    explanation: "Shalat wajib terdiri dari Subuh, Zuhur, Asar, Magrib, dan Isya."
-  },
-  {
-    category: "Akhlak",
-    question: "Sikap berkata sesuai dengan kenyataan disebut ...",
-    options: ["Sombong", "Jujur", "Dengki", "Takabur"],
-    answer: 1,
-    explanation: "Jujur adalah sikap menyampaikan sesuatu sesuai dengan kenyataan."
-  },
-  {
-    category: "Al-Qur'an",
-    question: "Surah pertama dalam susunan mushaf Al-Qur'an adalah ...",
-    options: ["Al-Baqarah", "Al-Ikhlas", "Al-Fatihah", "An-Nas"],
-    answer: 2,
-    explanation: "Surah Al-Fatihah merupakan surah pertama dalam susunan mushaf Al-Qur'an."
-  },
-  {
-    category: "Sejarah Islam",
-    question: "Nabi Muhammad SAW dilahirkan di kota ...",
-    options: ["Madinah", "Makkah", "Baghdad", "Damaskus"],
-    answer: 1,
-    explanation: "Nabi Muhammad SAW dilahirkan di kota Makkah."
-  },
-  {
-    category: "Fiqih",
-    question: "Bersuci dari hadas kecil dapat dilakukan dengan ...",
-    options: ["Wudhu", "Tidur", "Makan", "Berjalan"],
-    answer: 0,
-    explanation: "Wudhu merupakan salah satu cara bersuci dari hadas kecil."
-  },
-  {
-    category: "Akidah",
-    question: "Malaikat yang bertugas menyampaikan wahyu adalah ...",
-    options: ["Mikail", "Israfil", "Izrail", "Jibril"],
-    answer: 3,
-    explanation: "Malaikat Jibril bertugas menyampaikan wahyu Allah kepada para nabi dan rasul."
-  },
-  {
-    category: "Akhlak",
-    question: "Berbakti kepada kedua orang tua disebut ...",
-    options: ["Ujub", "Birrul walidain", "Riya", "Hasad"],
-    answer: 1,
-    explanation: "Birrul walidain berarti berbuat baik dan berbakti kepada kedua orang tua."
-  },
-  {
-    category: "Fiqih",
-    question: "Puasa wajib bagi umat Islam dilaksanakan pada bulan ...",
-    options: ["Syawal", "Rajab", "Ramadan", "Muharam"],
-    answer: 2,
-    explanation: "Puasa Ramadan merupakan salah satu kewajiban bagi umat Islam yang memenuhi syarat."
-  },
-  {
-    category: "Al-Qur'an",
-    question: "Surah Al-Ikhlas menjelaskan tentang ...",
-    options: ["Kisah nabi", "Keesaan Allah", "Hukum waris", "Perdagangan"],
-    answer: 1,
-    explanation: "Surah Al-Ikhlas menjelaskan tentang tauhid dan keesaan Allah SWT."
-  },
-  {
-    category: "Sejarah Islam",
-    question: "Peristiwa hijrah Nabi Muhammad SAW adalah perpindahan dari ...",
-    options: ["Madinah ke Makkah", "Makkah ke Madinah", "Makkah ke Mesir", "Madinah ke Syam"],
-    answer: 1,
-    explanation: "Nabi Muhammad SAW berhijrah dari Makkah ke Madinah."
-  },
-  {
-    category: "Akidah",
-    question: "Rukun Islam yang pertama adalah ...",
-    options: ["Shalat", "Zakat", "Puasa", "Syahadat"],
-    answer: 3,
-    explanation: "Syahadat merupakan rukun Islam yang pertama."
-  },
-  {
-    category: "Akhlak",
-    question: "Sikap rendah hati dan tidak sombong disebut ...",
-    options: ["Tawadhu", "Takabur", "Riya", "Hasad"],
-    answer: 0,
-    explanation: "Tawadhu adalah sikap rendah hati dan tidak merasa lebih baik daripada orang lain."
-  },
-  {
-    category: "Fiqih",
-    question: "Zakat fitrah ditunaikan pada bulan ...",
-    options: ["Ramadan", "Safar", "Rajab", "Rabiul Awal"],
-    answer: 0,
-    explanation: "Zakat fitrah ditunaikan pada bulan Ramadan hingga sebelum pelaksanaan salat Idulfitri."
-  }
-];
+    function startQuiz() {
+      const nameInput = getElement("studentName");
+      student = nameInput.value.trim();
 
-let currentQuestion = 0;
-let userAnswers = new Array(questions.length).fill(null);
-let student = "";
+      if (!student) {
+        alert("Silakan masukkan nama terlebih dahulu!");
+        nameInput.focus();
+        return;
+      }
 
-function startQuiz() {
-  student = document.getElementById("studentName").value.trim();
+      currentQuestion = 0;
+      userAnswers = new Array(questions.length).fill(null);
 
-  if (!student) {
-    alert("Silakan masukkan nama terlebih dahulu!");
-    return;
-  }
+      getElement("start").classList.add("hidden");
+      getElement("result").classList.add("hidden");
+      getElement("quiz").classList.remove("hidden");
 
-  document.getElementById("start").classList.add("hidden");
-  document.getElementById("quiz").classList.remove("hidden");
-
-  showQuestion();
-}
-
-function showQuestion() {
-  const q = questions[currentQuestion];
-
-  document.getElementById("questionNumber").innerText =
-    `Soal ${currentQuestion + 1} dari ${questions.length}`;
-
-  document.getElementById("answered").innerText =
-    `Terjawab: ${userAnswers.filter(a => a !== null).length}/${questions.length}`;
-
-  document.getElementById("progressBar").style.width =
-    `${((currentQuestion + 1) / questions.length) * 100}%`;
-
-  document.getElementById("category").innerText = q.category;
-  document.getElementById("question").innerText = q.question;
-
-  const options = document.getElementById("options");
-  options.innerHTML = "";
-
-  q.options.forEach((option, index) => {
-    const button = document.createElement("button");
-
-    button.className = "option" +
-      (userAnswers[currentQuestion] === index ? " selected" : "");
-
-    button.innerText =
-      `${String.fromCharCode(65 + index)}. ${option}`;
-
-    button.onclick = () => {
-      userAnswers[currentQuestion] = index;
       showQuestion();
-    };
-
-    options.appendChild(button);
-  });
-
-  document.getElementById("prevBtn").disabled =
-    currentQuestion === 0;
-
-  document.getElementById("nextBtn").innerText =
-    currentQuestion === questions.length - 1
-      ? "Selesaikan Kuis ✓"
-      : "Berikutnya →";
-}
-
-function previousQuestion() {
-  if (currentQuestion > 0) {
-    currentQuestion--;
-    showQuestion();
-  }
-}
-
-function nextQuestion() {
-  if (userAnswers[currentQuestion] === null) {
-    alert("Silakan pilih jawaban terlebih dahulu!");
-    return;
-  }
-
-  if (currentQuestion < questions.length - 1) {
-    currentQuestion++;
-    showQuestion();
-  } else {
-    if (userAnswers.includes(null)) {
-      alert("Masih ada soal yang belum dijawab!");
-      return;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    finishQuiz();
-  }
-}
+    function showQuestion() {
+      const q = questions[currentQuestion];
+      const answeredCount = userAnswers.filter(answer => answer !== null).length;
 
-function finishQuiz() {
-  const correct = questions.filter(
-    (q, i) => userAnswers[i] === q.answer
-  ).length;
+      getElement("questionNumber").textContent =
+        `Soal ${currentQuestion + 1} dari ${questions.length}`;
 
-  const wrong = questions.length - correct;
-  const score = Math.round(correct / questions.length * 100);
+      getElement("answered").textContent =
+        `Terjawab: ${answeredCount}/${questions.length}`;
 
-  document.getElementById("quiz").classList.add("hidden");
-  document.getElementById("result").classList.remove("hidden");
+      const progress = ((currentQuestion + 1) / questions.length) * 100;
+      getElement("progressBar").style.width = `${progress}%`;
+      getElement("progressTrack").setAttribute("aria-valuenow", currentQuestion + 1);
 
-  document.getElementById("resultName").innerText =
-    `Peserta: ${student}`;
+      getElement("category").textContent = q.category;
+      getElement("question").textContent = q.question;
 
-  document.getElementById("score").innerText = score;
+      const optionsContainer = getElement("options");
+      optionsContainer.replaceChildren();
 
-  let grade = "";
-  let description = "";
+      q.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        const isSelected = userAnswers[currentQuestion] === index;
 
-  if (score >= 90) {
-    grade = "Sangat Baik!";
-    description = "Pengetahuan PAI kamu sangat baik.";
-  } else if (score >= 80) {
-    grade = "Baik!";
-    description = "Pertahankan hasil belajarmu.";
-  } else if (score >= 70) {
-    grade = "Cukup Baik!";
-    description = "Terus tingkatkan pemahamanmu.";
-  } else {
-    grade = "Tetap Semangat!";
-    description = "Pelajari kembali materi dan coba lagi.";
-  }
+        button.type = "button";
+        button.className = "option" + (isSelected ? " selected" : "");
+        button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+        button.setAttribute("aria-pressed", String(isSelected));
 
-  document.getElementById("grade").innerText = grade;
-  document.getElementById("description").innerText = description;
+        button.addEventListener("click", () => {
+          userAnswers[currentQuestion] = index;
+          showQuestion();
+        });
 
-  document.getElementById("detailScore").innerText =
-    `Jawaban benar: ${correct} | Jawaban salah: ${wrong} | Total soal: 15`;
-}
+        optionsContainer.appendChild(button);
+      });
 
-function showReview() {
-  const review = document.getElementById("review");
-  review.classList.toggle("hidden");
+      getElement("prevBtn").disabled = currentQuestion === 0;
+      getElement("nextBtn").textContent =
+        currentQuestion === questions.length - 1
+          ? "Selesaikan Kuis ✓"
+          : "Berikutnya →";
+    }
 
-  if (!review.classList.contains("hidden")) {
-    const content = document.getElementById("reviewContent");
-    content.innerHTML = "";
+    function previousQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion();
+      }
+    }
 
-    questions.forEach((q, i) => {
-      const isCorrect = userAnswers[i] === q.answer;
+    function nextQuestion() {
+      if (userAnswers[currentQuestion] === null) {
+        alert("Silakan pilih jawaban terlebih dahulu!");
+        return;
+      }
 
-      const item = document.createElement("div");
-      item.className = "review-item";
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        if (userAnswers.includes(null)) {
+          alert("Masih ada soal yang belum dijawab!");
+          return;
+        }
+        finishQuiz();
+      }
+    }
 
-      const title = document.createElement("strong");
-      title.textContent = `${i + 1}. ${q.question}`;
+    function finishQuiz() {
+      const correct = questions.filter(
+        (q, index) => userAnswers[index] === q.answer
+      ).length;
 
-      const status = document.createElement("p");
-      status.className = isCorrect ? "correct" : "wrong";
-      status.textContent = isCorrect ? "✓ Benar" : "✗ Salah";
+      const wrong = questions.length - correct;
+      const score = Math.round((correct / questions.length) * 100);
 
-      const answer = document.createElement("p");
-      answer.textContent =
-        "Jawaban benar: " +
-        String.fromCharCode(65 + q.answer) +
-        ". " + q.options[q.answer];
+      getElement("quiz").classList.add("hidden");
+      getElement("result").classList.remove("hidden");
+      getElement("resultName").textContent = `Peserta: ${student}`;
+      getElement("score").textContent = score;
 
-      const explanation = document.createElement("p");
-      explanation.textContent = "Pembahasan: " + q.explanation;
+      let grade;
+      let description;
 
-      item.append(title, status, answer, explanation);
-      content.appendChild(item);
+      if (score >= 90) {
+        grade = "Sangat Baik!";
+        description = "Pengetahuan PAI kamu sangat baik.";
+      } else if (score >= 80) {
+        grade = "Baik!";
+        description = "Pertahankan hasil belajarmu.";
+      } else if (score >= 70) {
+        grade = "Cukup Baik!";
+        description = "Terus tingkatkan pemahamanmu.";
+      } else {
+        grade = "Tetap Semangat!";
+        description = "Pelajari kembali materi dan coba lagi.";
+      }
+
+      getElement("grade").textContent = grade;
+      getElement("description").textContent = description;
+      getElement("detailScore").textContent =
+        `Jawaban benar: ${correct} | Jawaban salah: ${wrong} | Total soal: ${questions.length}`;
+
+      getElement("review").classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showReview() {
+      const review = getElement("review");
+      review.classList.toggle("hidden");
+
+      if (!review.classList.contains("hidden")) {
+        const content = getElement("reviewContent");
+        content.replaceChildren();
+
+        questions.forEach((q, index) => {
+          const isCorrect = userAnswers[index] === q.answer;
+          const item = document.createElement("div");
+          item.className = "review-item";
+
+          const title = document.createElement("strong");
+          title.textContent = `${index + 1}. ${q.question}`;
+
+          const status = document.createElement("p");
+          status.className = isCorrect ? "correct" : "wrong";
+          status.textContent = isCorrect ? "✓ Jawaban kamu benar" : "✗ Jawaban kamu salah";
+
+          const selectedAnswer = document.createElement("p");
+          const selected = userAnswers[index];
+          selectedAnswer.textContent = selected === null
+            ? "Jawaban kamu: Belum dijawab"
+            : `Jawaban kamu: ${String.fromCharCode(65 + selected)}. ${q.options[selected]}`;
+
+          const correctAnswer = document.createElement("p");
+          correctAnswer.textContent =
+            `Jawaban benar: ${String.fromCharCode(65 + q.answer)}. ${q.options[q.answer]}`;
+
+          const explanation = document.createElement("p");
+          explanation.textContent = `Pembahasan: ${q.explanation}`;
+
+          item.append(title, status, selectedAnswer, correctAnswer, explanation);
+          content.appendChild(item);
+        });
+      }
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = new Array(questions.length).fill(null);
+
+      getElement("result").classList.add("hidden");
+      getElement("review").classList.add("hidden");
+      getElement("start").classList.remove("hidden");
+      getElement("studentName").value = student;
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    getElement("studentName").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        startQuiz();
+      }
     });
-  }
-}
-
-function restartQuiz() {
-  currentQuestion = 0;
-  userAnswers = new Array(questions.length).fill(null);
-
-  document.getElementById("result").classList.add("hidden");
-  document.getElementById("review").classList.add("hidden");
-  document.getElementById("start").classList.remove("hidden");
-  document.getElementById("studentName").value = student;
-}
-
-</script>
-
+  </script>
 </body>
 </html>
