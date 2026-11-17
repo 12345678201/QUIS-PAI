@@ -7,6 +7,7 @@
   <!-- Identitas website -->
   <title>Kuis Pendidikan Agama Islam | Tugas PAI</title>
   <meta name="description" content="Kuis interaktif Pendidikan Agama Islam. Uji pengetahuan tentang Al-Qur'an, Akidah, Fikih, Akhlak, dan Sejarah Islam.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☪️</text></svg>">
 
   <!-- WhatsApp, Facebook, dan media sosial -->
   <meta property="og:type" content="website">
@@ -104,7 +105,7 @@
       padding: 14px;
       border: 1px solid #cbd7ce;
       border-radius: 9px;
-      margin: 5px 0 15px;
+      margin: 5px 0 12px;
       font-size: 16px;
       color: #24352b;
     }
@@ -112,6 +113,16 @@
     input:focus {
       outline: 3px solid #13804e30;
       border-color: #13804e;
+    }
+
+    .error-msg {
+      color: #c0392b;
+      background: #fdecea;
+      border: 1px solid #f5c6cb;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 12px;
     }
 
     button {
@@ -234,7 +245,7 @@
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .navigation button {
@@ -324,10 +335,13 @@
     }
 
     @media (max-width: 360px) {
-      .navigation,
+      .navigation {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
       .result-actions {
         grid-template-columns: 1fr;
-        display: grid;
       }
     }
   </style>
@@ -358,6 +372,8 @@
         required
       >
 
+      <p class="error-msg hidden" id="startError" role="alert"></p>
+
       <button class="primary start-button" type="button" onclick="startQuiz()">
         Mulai Kuis →
       </button>
@@ -386,6 +402,8 @@
       <div class="question" id="question"></div>
       <div id="options"></div>
 
+      <p class="error-msg hidden" id="quizError" role="alert" style="margin-top: 16px; margin-bottom: 0;"></p>
+
       <div class="navigation">
         <button class="secondary" id="prevBtn" type="button" onclick="previousQuestion()">
           ← Sebelumnya
@@ -409,7 +427,7 @@
       <p id="detailScore" style="margin-top: 12px;"></p>
 
       <div class="result-actions">
-        <button class="primary" type="button" onclick="showReview()">
+        <button class="primary" id="reviewBtn" type="button" onclick="showReview(this)">
           Lihat Pembahasan
         </button>
         <button class="secondary" type="button" onclick="restartQuiz()">
@@ -547,16 +565,29 @@
 
     const getElement = (id) => document.getElementById(id);
 
+    function showError(id, message) {
+      const errorBox = getElement(id);
+      errorBox.textContent = message;
+      errorBox.classList.remove("hidden");
+    }
+
+    function clearError(id) {
+      const errorBox = getElement(id);
+      errorBox.textContent = "";
+      errorBox.classList.add("hidden");
+    }
+
     function startQuiz() {
       const nameInput = getElement("studentName");
       student = nameInput.value.trim();
 
       if (!student) {
-        alert("Silakan masukkan nama terlebih dahulu!");
+        showError("startError", "Silakan masukkan nama terlebih dahulu!");
         nameInput.focus();
         return;
       }
 
+      clearError("startError");
       currentQuestion = 0;
       userAnswers = new Array(questions.length).fill(null);
 
@@ -569,6 +600,7 @@
     }
 
     function showQuestion() {
+      clearError("quizError");
       const q = questions[currentQuestion];
       const answeredCount = userAnswers.filter(answer => answer !== null).length;
 
@@ -621,7 +653,7 @@
 
     function nextQuestion() {
       if (userAnswers[currentQuestion] === null) {
-        alert("Silakan pilih jawaban terlebih dahulu!");
+        showError("quizError", "Silakan pilih jawaban terlebih dahulu!");
         return;
       }
 
@@ -630,7 +662,7 @@
         showQuestion();
       } else {
         if (userAnswers.includes(null)) {
-          alert("Masih ada soal yang belum dijawab!");
+          showError("quizError", "Masih ada soal yang belum dijawab!");
           return;
         }
         finishQuiz();
@@ -673,14 +705,16 @@
         `Jawaban benar: ${correct} | Jawaban salah: ${wrong} | Total soal: ${questions.length}`;
 
       getElement("review").classList.add("hidden");
+      getElement("reviewBtn").textContent = "Lihat Pembahasan";
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    function showReview() {
+    function showReview(btn) {
       const review = getElement("review");
-      review.classList.toggle("hidden");
+      const isHidden = review.classList.toggle("hidden");
+      btn.textContent = isHidden ? "Lihat Pembahasan" : "Sembunyikan Pembahasan";
 
-      if (!review.classList.contains("hidden")) {
+      if (!isHidden) {
         const content = getElement("reviewContent");
         content.replaceChildren();
 
@@ -719,13 +753,22 @@
       currentQuestion = 0;
       userAnswers = new Array(questions.length).fill(null);
 
+      clearError("startError");
+      clearError("quizError");
       getElement("result").classList.add("hidden");
       getElement("review").classList.add("hidden");
+      getElement("reviewBtn").textContent = "Lihat Pembahasan";
       getElement("start").classList.remove("hidden");
       getElement("studentName").value = student;
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    getElement("studentName").addEventListener("input", () => {
+      if (getElement("studentName").value.trim()) {
+        clearError("startError");
+      }
+    });
 
     getElement("studentName").addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
